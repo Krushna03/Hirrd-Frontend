@@ -11,7 +11,12 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': 'https://hirrd-backend.onrender.com'
+      '/api': {
+        target: 'https://hirrd-backend.onrender.com',
+        changeOrigin: true,
+        secure: false,  // Ignore self-signed certs for development
+        ws: true,  // WebSocket support if needed
+      }
     },
   },
 
