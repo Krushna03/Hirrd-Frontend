@@ -10,8 +10,7 @@ import { useState } from "react"
 import AuthLoader from "@/loaders/AuthLoader"
 import { useNavigate } from "react-router-dom"
 // const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
 
 export default function SignIn({ setShowRegister, setShowSignin }) {
