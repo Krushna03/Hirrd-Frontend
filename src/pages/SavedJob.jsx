@@ -9,7 +9,7 @@ const SavedJob = () => {
   const [savedJobs, setSavedJobs] = useState([]);
   const user = useSelector(state => state.auth.userData);
   const userID = user.data?._id;
-
+  
 
   const getSavedJobs = async () => {
     setLoading(true)
@@ -57,7 +57,9 @@ const SavedJob = () => {
             />
           ))
         ) : (
-          <div>No Saved Jobs 👀</div>
+          <div>
+              No Saved Jobs 👀
+          </div>
         )}
       </div>
     </div>

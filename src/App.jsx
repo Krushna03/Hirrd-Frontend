@@ -10,6 +10,7 @@ import JobPage from './pages/JobPage'
 import PostJob from './pages/PostJob'
 import SavedJob from './pages/SavedJob'
 import MyJobs from './pages/MyJobs'
+import ManageUser from './pages/ManageUser'
 
 
 const router = createBrowserRouter([
@@ -68,6 +69,14 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         )
       },
+      {
+        path: '/manage-user',
+        element: (
+           <ProtectedRoute>
+              <ManageUser />
+           </ProtectedRoute>
+        )
+      }
     ]
   }
 ])

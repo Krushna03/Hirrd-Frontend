@@ -13,8 +13,7 @@ const ApplicationCard = ({ application, job }) => {
     const user = useSelector(state => state.auth.userData)
     const isCandidate = user?.data?.role === 'candidate'
     const jobID = job?._id
-    
-    console.log(application?.resume);
+
 
     const handleDownload = () => {
         const link = document.createElement("a");

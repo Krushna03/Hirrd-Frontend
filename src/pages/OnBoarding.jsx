@@ -10,7 +10,6 @@ const Onboarding = () => {
    const dispatch = useDispatch()
    const navigate = useNavigate()
    const authStatus = useSelector((state) => state.auth.status)
-   const userData = useSelector((state) => state.auth.userData);
    const [isLoading, setIsLoading] = useState(false)
 
   const handleRoleSelection = async (role) => {
@@ -34,7 +33,6 @@ const Onboarding = () => {
   }
 
   const navigateUser = (role) => {
-    console.log(role);
       if (role === "recruiter") {
         navigate('/post-job')
       }

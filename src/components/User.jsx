@@ -24,6 +24,7 @@ export default function User() {
     userInitial = registeredUser.data?.username.charAt(0).toUpperCase();
   }
 
+  const avatarColor = registeredUser.data?.role === 'candidate' ? 'bg-blue-700' : 'bg-red-700';
 
   const logoutHandler = async () => {
     setLoading(true)
@@ -47,7 +48,7 @@ export default function User() {
         <DropdownMenuTrigger asChild>
           
           <Button variant='ghost' className="relative h-12 w-12 rounded-full p-0">
-            <Avatar className="h-12 w-12">
+            <Avatar className={`h-12 w-12 ${avatarColor}`}>
               <AvatarFallback className="text-2xl font-semibold text-white">{userInitial}</AvatarFallback>
             </Avatar>
           </Button>
@@ -58,7 +59,7 @@ export default function User() {
           className="user-card bg-dark-gray text-gray-300 rounded-xl shadow-lg p-0 overflow-hidden" align="end" 
         >
           <div className="bg-dark-gray flex items-center gap-3 p-4 border-bottom border-btm">
-            <Avatar className="h-12 w-12">
+            <Avatar className={`h-12 w-12 ${avatarColor}`}>
               <AvatarFallback className="text-3xl font-semibold text-white">{userInitial}</AvatarFallback>
             </Avatar>
 
@@ -75,7 +76,12 @@ export default function User() {
           <div className="py-1">
             <DropdownMenuItem className="py-4 px-7 focus:bg-[#2a2a2a] focus:text-white border-btm">
               <Settings className="mr-5 h-4 w-4" /> 
-               Manage account
+                 <Link onClick={() => {
+                    navigate('/manage-user')
+                    navigate(0)
+                 }}>
+                    Manage account
+                 </Link>
             </DropdownMenuItem>
             
             <DropdownMenuItem className="py-4 px-7 focus:bg-[#2a2a2a] focus:text-white border-btm">

@@ -14,6 +14,8 @@ const ProtectedRoute = ({ children }) => {
   const authStatus = useSelector((state) => state.auth.status)
   const userData = useSelector((state) => state.auth.userData)
 
+  const token = JSON.parse(localStorage.getItem('authToken'))
+
   useEffect(() => {
     const getCurrentUser = async () => {
       try {
@@ -29,14 +31,18 @@ const ProtectedRoute = ({ children }) => {
         dispatch(logout());
       }
     };
-    getCurrentUser()
+    if (token) {
+      getCurrentUser()
+    }
   }, [])
 
-   if (!user && !authStatus) {
+  
+   
+  if (!user && !authStatus) {
       return <Navigate to="/?sign-in=true" />
    }
 
-  if(user !== undefined && !userData?.data?.role  && pathname !== '/onboarding') {
+  if(user !== undefined && !userData?.data?.role && pathname !== '/onboarding') {
     return <Navigate to='/onboarding' />
   }
 

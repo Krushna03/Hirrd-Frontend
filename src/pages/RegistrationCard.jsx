@@ -114,12 +114,12 @@ export default function RegistrationCard({ setShowRegister, setShowSignin }) {
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t border-gray-800"></span>
             </div>
-            <div className="relative flex justify-center text-xs uppercase">
+            {/* <div className="relative flex justify-center text-xs uppercase">
               <span className="bg-black px-2 text-gray-300">Or continue with</span>
-            </div>
+            </div> */}
           </div>
 
-          <Button 
+          {/* <Button 
             variant="outline" 
             className="w-full bg-gray-900 text-white border-gray-700 hover:bg-gray-800 transition-colors duration-300"
           >
@@ -130,7 +130,7 @@ export default function RegistrationCard({ setShowRegister, setShowSignin }) {
               <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
             </svg>
             Sign up with Google
-          </Button>
+          </Button> */}
 
           <div className="text-center text-sm">
             Already have an account?{" "}

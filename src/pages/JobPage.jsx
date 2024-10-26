@@ -22,7 +22,7 @@ const JobPage = () => {
   
 
 
-  const getAppications = async () => {
+  const getApplications = async () => {
     try {
       const response = await axios.get(`/api/v1/application/getApplications?jobId=${jobId}`);
   
@@ -54,9 +54,8 @@ const JobPage = () => {
   };
 
 
-  useEffect(() => {
-    const fetchJob = async () => {
-      setLoading(true)
+  const fetchJob = async () => {
+    setLoading(true)
       try {
         const job = await axios.get(`/api/v1/job/getJobById/${jobId}`)
         if (job) {
@@ -70,14 +69,24 @@ const JobPage = () => {
         setLoading(false)
       }
     }
-    fetchJob()
-    getAppications()
-  }, [jobId])
+
+    const handleApplicationSubmit = () => {
+      setLoading(true); 
+      fetchJob(); 
+      getApplications(); 
+      setLoading(false);
+    };
+
+
+    useEffect(() => {
+      fetchJob()
+      getApplications()
+    }, [jobId])
   
 
-  if (loading) {
-    return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />;
-  }
+    if (loading) {
+      return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />;
+    }
 
 
   return (
@@ -150,6 +159,7 @@ const JobPage = () => {
           job={job}
           user={user}
           applied={applications?.find((app) => app.candidate_id === user?.data?._id)} 
+          onApplicationSubmit={handleApplicationSubmit}
         />
       )} 
       
