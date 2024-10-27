@@ -9,15 +9,15 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  server: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8000',
-        changeOrigin: true,
-        secure: false,  // Ignore self-signed certs for development
-        ws: true,  // WebSocket support if needed
-      }
-    },
-  },
+  // server: {
+  //   proxy: {
+  //     '/api': {
+  //       target: 'http://localhost:8000',
+  //       changeOrigin: true,
+  //       secure: false,  // Ignore self-signed certs for development
+  //       ws: true,  // WebSocket support if needed
+  //     }
+  //   },
+  // },
 
 })
