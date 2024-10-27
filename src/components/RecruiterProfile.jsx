@@ -9,6 +9,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { logout } from "@/context/authSlice";
 import AuthLoader from "@/loaders/AuthLoader";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 
 const RecruiterProfile = () => {
@@ -36,7 +38,7 @@ const RecruiterProfile = () => {
   useEffect(() => {
     const recruiterDetails = async () => {
       try {
-        const response = await axios.get("/api/v1/users/getRecruiterDetails", {params : {userID}})
+        const response = await axios.get(`${API_BASE_URL}/api/v1/users/getRecruiterDetails`, {params : {userID}})
         if (response) {
           setrecruiterDetails(response.data?.data)
           }
@@ -52,7 +54,7 @@ const RecruiterProfile = () => {
   const logoutHandler = async () => {
     setLoading(true)
     try {
-      const response = await axios.post('/api/v1/users/logout')
+      const response = await axios.post(`${API_BASE_URL}/api/v1/users/logout`)
       if (response.status === 200) {
         dispatch(logout())
         navigate(0)

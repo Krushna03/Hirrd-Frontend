@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 
 const AddCompanyDrawer = () => {
@@ -24,7 +25,7 @@ const AddCompanyDrawer = () => {
     formData.append("logo_url", data.logo[0])
 
      try {
-      const response = await axios.post('api/v1/company/newCompany', formData, {
+      const response = await axios.post(`${API_BASE_URL}/api/v1/company/newCompany`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         }

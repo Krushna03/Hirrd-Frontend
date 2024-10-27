@@ -6,6 +6,8 @@ import { Button } from './ui/button';
 import { BarLoader } from 'react-spinners';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 
 const JobCard = ({ job, isMyJob=false, savedInit, onJobSaved=()=>{}, onJobDeleted=()=>{} }) => {
@@ -22,7 +24,7 @@ const JobCard = ({ job, isMyJob=false, savedInit, onJobSaved=()=>{}, onJobDelete
    if (saved === true) {
       setLoading(true)
          try {
-            const response = await axios.delete('/api/v1/job/unSaveJob', {
+            const response = await axios.delete(`${API_BASE_URL}/api/v1/job/unSaveJob`, {
                data: { jobID }
             })
    
@@ -41,7 +43,7 @@ const JobCard = ({ job, isMyJob=false, savedInit, onJobSaved=()=>{}, onJobDelete
       else {
         setLoading(true)
         try {
-          const response = await axios.post('/api/v1/job/createSavedJob', {
+          const response = await axios.post(`${API_BASE_URL}/api/v1/job/createSavedJob`, {
              userID, 
              jobID
           })
@@ -64,7 +66,7 @@ const JobCard = ({ job, isMyJob=false, savedInit, onJobSaved=()=>{}, onJobDelete
     const handleDeleteJob = async () => {
         setLoading(true)
         try {
-          const response = await axios.delete(`/api/v1/job/deleteJob?jobID=${jobID}`)
+          const response = await axios.delete(`${API_BASE_URL}/api/v1/job/deleteJob?jobID=${jobID}`)
           if (response) {
              onJobDeleted(jobID);
           }

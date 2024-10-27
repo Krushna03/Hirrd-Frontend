@@ -3,6 +3,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { BarLoader } from "react-spinners";
 import { useSelector } from "react-redux";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 const SavedJob = () => {
   const [loading, setLoading] = useState(false);
@@ -14,7 +16,7 @@ const SavedJob = () => {
   const getSavedJobs = async () => {
     setLoading(true)
      try {
-      const fetchedJobs = await axios.get('/api/v1/job/getSavedJobs', {
+      const fetchedJobs = await axios.get(`${API_BASE_URL}/api/v1/job/getSavedJobs`, {
          params: { userID }
       })
  

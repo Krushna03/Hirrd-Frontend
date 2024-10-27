@@ -9,6 +9,8 @@ import { useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 
 export function ApplyJobDrawer({ user, job, applied = false, onApplicationSubmit }) {
@@ -33,7 +35,7 @@ export function ApplyJobDrawer({ user, job, applied = false, onApplicationSubmit
       formData.append('jobID', jobID);
       formData.append('userID', userID);
 
-      const response = await axios.post('/api/v1/application/createApplication', formData);
+      const response = await axios.post(`${API_BASE_URL}/api/v1/application/createApplication`, formData);
       if (response) {
         toast.success("Job application submitted !!");
         setDrawerOpen(false); 

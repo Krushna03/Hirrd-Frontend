@@ -19,7 +19,7 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     const getCurrentUser = async () => {
       try {
-        const response = await axios.get("/api/v1/users/currentUser");
+        const response = await axios.get(`${API_BASE_URL}/api/v1/users/currentUser`);
         
         if (response) {
           setUser(response.data);

@@ -14,6 +14,7 @@ import { BarLoader } from "react-spinners";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { createJOB } from "@/context/jobSlice";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 
 const PostJob = () => {
@@ -40,7 +41,7 @@ const PostJob = () => {
 
   const getCompanies = async () => {
      try {
-      const response = await axios.get("/api/v1/company/getCompanies")
+      const response = await axios.get(`${API_BASE_URL}/api/v1/company/getCompanies`)
 
       if (response) {
         setCompanies(response.data?.data)
@@ -54,7 +55,7 @@ const PostJob = () => {
   const onSubmit = async (data) => {
     setloading(true)
     try {
-      const response = await axios.post('/api/v1/job/createJob', data)
+      const response = await axios.post(`${API_BASE_URL}/api/v1/job/createJob`, data)
   
       if (response) {
          dispatch(createJOB({ jobData: response.data }))

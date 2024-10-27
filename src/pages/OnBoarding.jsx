@@ -5,6 +5,8 @@ import { BarLoader } from "react-spinners";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { login } from "@/context/authSlice";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 const Onboarding = () => {
    const dispatch = useDispatch()
@@ -16,7 +18,7 @@ const Onboarding = () => {
     setIsLoading(true)
       try {
         if (authStatus) {
-          const response = await axios.patch('/api/v1/users/updateUserRole', {role})
+          const response = await axios.patch(`${API_BASE_URL}/api/v1/users/updateUserRole`, {role})
   
           if (response?.data) {
             dispatch(login({ userData: response.data }))

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import axios from "axios";
 import { useSelector } from "react-redux";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 
 const JobListing = () => {
@@ -24,7 +25,7 @@ const JobListing = () => {
 
    const getCompanies = async () => {
      try {
-      const response = await axios.get("/api/v1/company/getCompanies")
+      const response = await axios.get(`${API_BASE_URL}/api/v1/company/getCompanies`)
 
       if (response) {
         setCompanies(response.data?.data)
@@ -38,7 +39,7 @@ const JobListing = () => {
    const handleSearch = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.get('/api/v1/job/getJobsBySearch', {
+      const response = await axios.get(`${API_BASE_URL}/api/v1/job/getJobsBySearch`, {
         params: { title, location, company_Name },
       });
 
@@ -67,7 +68,7 @@ const JobListing = () => {
     const initializeData = async () => {
       setJobLoading(true);
       try {
-        const savedResponse = await axios.get('/api/v1/job/getSavedJobs', {
+        const savedResponse = await axios.get(`${API_BASE_URL}/api/v1/job/getSavedJobs`, {
           params: { userID }
         });
         if (savedResponse.data.data) {
@@ -75,7 +76,7 @@ const JobListing = () => {
         }
         
         await getCompanies();
-        const jobsResponse = await axios.get('/api/v1/job/getJobs');
+        const jobsResponse = await axios.get(`${API_BASE_URL}/api/v1/job/getJobs`);
         
         if (jobsResponse?.data?.data) {
           const jobsWithSavedStatus = jobsResponse.data.data.map(job => ({

@@ -9,6 +9,8 @@ import { useDispatch } from "react-redux"
 import { login } from "@/context/authSlice"
 import { useState } from "react"
 import AuthLoader from "@/loaders/AuthLoader"
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 
 export default function RegistrationCard({ setShowRegister, setShowSignin }) {
@@ -21,7 +23,7 @@ export default function RegistrationCard({ setShowRegister, setShowSignin }) {
 
    const submit = async (data) => {
     try {
-      const registered = await axios.post('/api/v1/users/registeration', data);
+      const registered = await axios.post(`${API_BASE_URL}/api/v1/users/registeration`, data);
       if (registered) {
         dispatch(login({ userData: registered.data }));
         navigate('/onboarding');

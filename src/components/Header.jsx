@@ -34,7 +34,7 @@ const Header = () => {
 
   // const logoutHandler = async () => {
   //   try {
-  //     const response = await axios.post('/api/v1/users/logout')
+  //     const response = await axios.post('/o/v1/users/logout')
   //     if (response) {
   //       dispatch(logout())
   //     }

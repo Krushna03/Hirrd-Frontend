@@ -10,7 +10,7 @@ import { useState } from "react"
 import AuthLoader from "@/loaders/AuthLoader"
 import { useNavigate } from "react-router-dom"
 // const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api'; not imp
-// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 
 export default function SignIn({ setShowRegister, setShowSignin }) {
@@ -23,8 +23,8 @@ export default function SignIn({ setShowRegister, setShowSignin }) {
 
   const signIn = async (data) => {
     try {
-      // const signin = await axios.post(`${API_BASE_URL}/api/v1/users/signIn`, data) //production url
-      const signin = await axios.post(`/api/v1/users/signIn`, data)
+      const signin = await axios.post(`${API_BASE_URL}/api/v1/users/signIn`, data) //production url
+      // const signin = await axios.post(`/api/v1/users/signIn`, data)
   
       if (signin) {
         dispatch(login({ userData : signin.data }))

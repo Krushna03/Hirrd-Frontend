@@ -8,6 +8,7 @@ import { logout } from "@/context/authSlice"
 import { Link, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import SignOut from "@/loaders/SignOut"
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 
 export default function User() {
@@ -29,7 +30,7 @@ export default function User() {
   const logoutHandler = async () => {
     setLoading(true)
     try {
-      const response = await axios.post('/api/v1/users/logout')
+      const response = await axios.post(`${API_BASE_URL}/api/v1/users/logout`)
       if (response) {
         navigate(0)
         dispatch(logout())

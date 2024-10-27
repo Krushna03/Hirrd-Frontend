@@ -5,6 +5,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "./
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 const ApplicationCard = ({ application, job }) => {
     
@@ -26,7 +28,7 @@ const ApplicationCard = ({ application, job }) => {
     const handleStatusChange = async (status) => {
       setLoading(true)
       try {
-        const response = await axios.put(`/api/v1/application/changeApplicationStatus?jobID=${jobID}&status=${status}`);
+        const response = await axios.put(`${API_BASE_URL}/api/v1/application/changeApplicationStatus?jobID=${jobID}&status=${status}`);
         
         if (response) {
           console.log(response.data?.data?.status);
